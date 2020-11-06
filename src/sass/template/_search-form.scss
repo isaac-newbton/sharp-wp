@@ -1,0 +1,15 @@
+.search_box{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+
+    >input[type="text"]{
+        border-top-left-radius:50px;
+        border-bottom-left-radius:50px;
+    }
+
+    >button{
+        border-top-right-radius:50px;
+        border-bottom-right-radius:50px;
+    }
+}

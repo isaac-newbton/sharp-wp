@@ -1,5 +1,6 @@
 <?php
 define('ACA_INCLUDE_PATH', get_stylesheet_directory() . '/inc/');
+define('ACA_FONTAWESOME_VERSION', '5.15.1');
 
 include_once ACA_INCLUDE_PATH . 'custom-post-types.php';
 include_once ACA_INCLUDE_PATH . 'acf-setup.php';
@@ -41,5 +42,17 @@ function aca_register_styles() {
 
 	wp_enqueue_style('aca-style', get_stylesheet_uri(), [], $theme_version);
 	wp_enqueue_style('aca-style-min', get_stylesheet_directory_uri() . '/assets/css/main.min.css', [], $theme_version);
+
+	wp_enqueue_style('fontawesome-style', get_stylesheet_directory_uri() . '/inc/fontawesome/css/all.min.css', [], ACA_FONTAWESOME_VERSION);
 }
 add_action('wp_enqueue_scripts', 'aca_register_styles');
+
+function aca_register_scripts(){
+	$theme_version = wp_get_theme()->get('Version');
+
+	wp_enqueue_script('aca-script-min', get_stylesheet_directory_uri() . '/assets/js/main-min.js', [], $theme_version);
+	wp_enqueue_script('aca-script-nav-min', get_stylesheet_directory_uri() . '/assets/js/nav-min.js', [], $theme_version, true);
+
+	wp_enqueue_script('fontawesome-style', get_stylesheet_directory_uri() . '/inc/fontawesome/js/all.min.js', [], ACA_FONTAWESOME_VERSION);
+}
+add_action('wp_enqueue_scripts', 'aca_register_scripts');

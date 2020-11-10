@@ -1,23 +1,25 @@
-let navTriggerButton = document.getElementById('nav_trigger_button')
-let navContainer = document.getElementById('main-menu-container')
-let navCloseButton = document.getElementById('nav_close_button')
+let navTriggerButton = document.getElementById('site_nav_button')
+let navContainer = document.getElementById('site_nav_wrapper')
+let navCloseButton = document.getElementById('site_close_nav_button')
 
 if(navTriggerButton && navContainer){
-    navContainer.prepend(navCloseButton)
+    let setNavState = function(on = false){
+        navTriggerButton.classList.remove(on ? 'active' : 'inactive')
+        navTriggerButton.classList.add(on ? 'inactive' : 'active')
+        if(on){
+            navContainer.classList.add('active')
+        }else{
+            navContainer.classList.remove('active')
+        }
+    }
 
     let toggleNav = function(){
-        let navIsOff = navContainer.classList.contains('inactive')
+        let navIsOff = !navContainer.classList.contains('active')
         if(navIsOff){
-            navTriggerButton.classList.remove('active')
-            navTriggerButton.classList.add('inactive')
-            navContainer.classList.remove('inactive')
-            navContainer.classList.add('active')
+            setNavState(true)
             navCloseButton.focus()
         }else{
-            navTriggerButton.classList.remove('inactive')
-            navTriggerButton.classList.add('active')
-            navContainer.classList.remove('active')
-            navContainer.classList.add('inactive')
+            setNavState(false)
             navTriggerButton.focus()
         }
     }

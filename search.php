@@ -10,7 +10,7 @@ get_header();
         <form action="/" class="search">
             <div class="search_box">
                 <input type="text" name="s" id="search_input" placeholder="Enter search term" value="<?php the_search_query(); ?>">
-                <button type="submit">Search</button>
+                <button type="submit"><i class="fa fa-search"></i></button>
             </div>
         </form>
 

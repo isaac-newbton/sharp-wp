@@ -41,6 +41,8 @@ add_action('after_setup_theme', 'aca_theme_setup');
 function aca_register_styles() {
 	$theme_version = wp_get_theme()->get('Version');
 
+	wp_enqueue_style('aca-typography-fonts', 'https://cloud.typography.com/7311712/6266612/css/fonts.css', [], $theme_version);
+
 	wp_enqueue_style('aca-style', get_stylesheet_uri(), [], $theme_version);
 	wp_enqueue_style('aca-style-min', get_stylesheet_directory_uri() . '/assets/css/main.min.css', [], $theme_version);
 

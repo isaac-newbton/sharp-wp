@@ -18,7 +18,7 @@ body {
 	background: #fff;
 	box-sizing: border-box;
 	color: #000;
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: $primaryFontFamily;
 	font-size: 1.8rem;
 	letter-spacing: -0.015em;
 	text-align: left;
@@ -27,7 +27,7 @@ body {
 @supports ( font-variation-settings: normal ) {
 
 	body {
-		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: $primaryFontFamily;
 	}
 }
 
@@ -165,6 +165,7 @@ hr {
 
 a {
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 a:hover,

@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){var t;e("#upload_footer_logo_button").click(function(e){e.preventDefault(),t?t.open():t=wp.media.frames.file_frame=wp.media({title:"Upload an image",button:{text:"Choose image"},multiple:!1})})});

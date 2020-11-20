@@ -65,15 +65,23 @@
                         ]); ?>
 
                         <div id="site_social_container">
-                            <i class="fab fa-facebook-square"></i>
-                            <i class="fab fa-twitter-square"></i>
-                            <i class="fab fa-linkedin"></i>
+                            <?php if($fbUrl = get_option('aca_facebook_profile_url')): ?>
+                                <a href="<?=esc_attr($fbUrl)?>" title="Facebook">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                            <?php endif; ?>
+                            <?php if($twUrl = get_option('aca_twitter_profile_url')): ?>
+                                <a href="<?=esc_attr($twUrl)?>" title="Twitter">
+                                    <i class="fab fa-twitter-square"></i>
+                                </a>
+                            <?php endif; ?>
+                            <?php if($liUrl = get_option('aca_linkedin_profile_url')): ?>
+                                <a href="<?=esc_attr($liUrl)?>" title="Linkedin">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            <?php endif; ?>
                         </div>
 
-                    </div>
-
-                    <div id="site_close_nav_button_container">
-                        <button id="site_close_nav_button" type="button" aria-label="Close Navigation">close&nbsp;<i class="fa fa-times"></i></button>
                     </div>
 
                 </nav>

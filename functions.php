@@ -1,5 +1,5 @@
 <?php
-define('ACA_INCLUDE_PATH', get_stylesheet_directory() . '/inc/');
+define('ACA_INCLUDE_PATH', get_template_directory() . '/inc/');
 define('ACA_FONTAWESOME_VERSION', '5.15.1');
 
 include_once ACA_INCLUDE_PATH . 'custom-post-types.php';
@@ -60,3 +60,5 @@ function aca_register_scripts(){
 	wp_enqueue_script('fontawesome-style', get_stylesheet_directory_uri() . '/inc/fontawesome/js/all.min.js', [], ACA_FONTAWESOME_VERSION);
 }
 add_action('wp_enqueue_scripts', 'aca_register_scripts');
+
+require_once get_template_directory() . '/inc/admin.php';

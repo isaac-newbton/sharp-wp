@@ -299,7 +299,7 @@ input[type="checkbox"]:checked::before {
 input,
 textarea,
 button{
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: $primaryFontFamily;
 	line-height: 1;
 }
 
@@ -308,7 +308,7 @@ button{
 	input,
 	textarea,
 	button{
-		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: $primaryFontFamily;
 	}
 }
 

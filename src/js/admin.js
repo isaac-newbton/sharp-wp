@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 
     var mediaUploader;
 
-    $('#upload_footer_logo_button').click(function(e){
+    $('#upload_footer_logo_button').on('click', function(e){
         e.preventDefault();
         if(mediaUploader){
             mediaUploader.open();
@@ -16,6 +16,14 @@ jQuery(document).ready(function($){
             },
             multiple: false
         });
+
+        mediaUploader.on('select', function(){
+            attachment = mediaUploader.state().get('selection').first().toJSON();
+            $('#upload_footer_logo_input').val(attachment.url);
+            $('#footer_logo').src(attachment.url);
+        });
+
+        mediaUploader.open();
     });
 
 });

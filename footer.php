@@ -5,7 +5,11 @@
     <div id="footer_content_wrapper">
 
         <div id="footer_logo_container">
-            <?php the_custom_logo(); ?>
+            <?php if($footerLogoUrl = get_option('aca_footer_logo')): ?>
+                <a href="<?php bloginfo('url'); ?>">
+                    <img src="<?=esc_attr($footerLogoUrl)?>" alt="<?php bloginfo('name'); ?>">
+                </a>
+            <?php endif; ?>
         </div>
 
         <nav id="footer_nav_wrapper">
@@ -35,7 +39,7 @@
                 </a>
             <?php endif; ?>
         </div>
-    
+
     </div>
 
 </footer> <!--#site_footer-->

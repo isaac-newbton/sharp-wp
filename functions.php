@@ -62,3 +62,5 @@ function aca_register_scripts(){
 add_action('wp_enqueue_scripts', 'aca_register_scripts');
 
 require_once get_template_directory() . '/inc/admin.php';
+
+require_once get_template_directory() . '/inc/gutenberg.php';

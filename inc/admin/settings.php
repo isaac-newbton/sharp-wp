@@ -25,7 +25,7 @@ function sharp_custom_settings(){
 
 function aca_footer_logo(){
     $value = esc_attr(get_option('aca_footer_logo'));
-    echo '<div><img id="footer_logo" src="'.$value.'" /></div><input type="button" value="Upload Logo" id="upload_footer_logo_button" class="button button-secondary" /><input type="hidden" name="aca_footer_logo" id="upload_footer_logo_input" value="'.$value.'" />';
+    echo '<div><img id="footer_logo" src="'.$value.'" /></div><input type="button" value="Set Footer Logo" id="upload_footer_logo_button" class="button button-secondary" /><input type="hidden" name="aca_footer_logo" id="upload_footer_logo_input" value="'.$value.'" />';
 }
 
 function aca_facebook_url(){

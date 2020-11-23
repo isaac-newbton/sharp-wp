@@ -1,0 +1,1 @@
+const{registerBlockType:registerBlockType}=wp.blocks;registerBlockType("aca/custom-cta",{title:"Call to Action",description:"A custom call-to-action block",icon:"format-image",category:"layout",attributes:{},edit(){},save(){}});

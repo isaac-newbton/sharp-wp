@@ -1,0 +1,19 @@
+.entry_header{
+    max-width: $maxContentWidth;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    margin-bottom:40px;
+
+    .entry_title{
+        border-bottom: 5px solid $underPageTitleBorderColor;
+        width: fit-content;
+        margin: 0 auto;
+        text-transform:uppercase;
+        color: $accentRed;
+        padding: 1rem;
+        font-size: 6rem;
+        text-align: center;
+        letter-spacing: 0.025em;
+    }
+}

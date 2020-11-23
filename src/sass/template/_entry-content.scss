@@ -1,0 +1,30 @@
+.entry_content{
+
+    p, ul, ol{
+        max-width: $maxContentWidth;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    >h2,
+    >h3,
+    >h4,
+    >h5,
+    >h6{
+        max-width: $maxContentWidth;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    hr{
+        max-width: $maxContentWidth;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

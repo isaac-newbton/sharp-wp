@@ -86,31 +86,36 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
+/***/ "./src/blocks/cta/index.js":
+/*!*********************************!*\
+  !*** ./src/blocks/cta/index.js ***!
+  \*********************************/
+/*! exports provided: name, settings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
-var registerBlockType = wp.blocks.registerBlockType;
 var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     InspectorControls = _wp$blockEditor.InspectorControls,
     ColorPalette = _wp$blockEditor.ColorPalette,
-    MediaUpload = _wp$blockEditor.MediaUpload;
+    MediaUpload = _wp$blockEditor.MediaUpload,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    BlockControls = _wp$blockEditor.BlockControls,
+    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     Button = _wp$components.Button,
     RangeControl = _wp$components.RangeControl;
-registerBlockType('aca/custom-cta', {
-  //built-in attributes
-  title: 'Call to Action',
+var ALLOWED_BLOCKS = ['core/button'];
+var name = 'aca/cta';
+var settings = {
+  title: 'Call 2 Action (C)',
   description: 'A custom call-to-action block',
   icon: 'format-image',
   category: 'layout',
@@ -134,6 +139,10 @@ registerBlockType('aca/custom-cta', {
       type: 'string',
       default: 'black'
     },
+    bodyAlignment: {
+      type: 'string',
+      default: 'none'
+    },
     backgroundImage: {
       type: 'string',
       default: null
@@ -155,6 +164,7 @@ registerBlockType('aca/custom-cta', {
         titleColor = attributes.titleColor,
         body = attributes.body,
         bodyColor = attributes.bodyColor,
+        bodyAlignment = attributes.bodyAlignment,
         backgroundImage = attributes.backgroundImage,
         overlayColor = attributes.overlayColor,
         overlayOpacity = attributes.overlayOpacity; //custom functions
@@ -180,6 +190,12 @@ registerBlockType('aca/custom-cta', {
     function onChangeBodyColor(newColor) {
       setAttributes({
         bodyColor: newColor
+      });
+    }
+
+    function onChangeBodyAlignment(newAlignment) {
+      setAttributes({
+        bodyAlignment: newAlignment === undefined ? 'none' : newAlignment
       });
     }
 
@@ -256,14 +272,18 @@ registerBlockType('aca/custom-cta', {
         background: overlayColor,
         opacity: overlayOpacity
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+      value: bodyAlignment,
+      onChange: onChangeBodyAlignment
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       key: "editable",
       tagName: "h2",
       placeholder: "Your CTA Title",
       value: title,
       onChange: onChangeTitle,
       style: {
-        color: titleColor
+        color: titleColor,
+        textAlign: bodyAlignment
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       key: "editable",
@@ -272,8 +292,11 @@ registerBlockType('aca/custom-cta', {
       value: body,
       onChange: onChangeBody,
       style: {
-        color: bodyColor
+        color: bodyColor,
+        textAlign: bodyAlignment
       }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+      allowedBlocks: ALLOWED_BLOCKS
     }))];
   },
   save: function save(_ref3) {
@@ -282,6 +305,7 @@ registerBlockType('aca/custom-cta', {
         titleColor = attributes.titleColor,
         body = attributes.body,
         bodyColor = attributes.bodyColor,
+        bodyAlignment = attributes.bodyAlignment,
         backgroundImage = attributes.backgroundImage,
         overlayColor = attributes.overlayColor,
         overlayOpacity = attributes.overlayOpacity;
@@ -301,17 +325,241 @@ registerBlockType('aca/custom-cta', {
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       style: {
-        color: titleColor
+        color: titleColor,
+        textAlign: bodyAlignment
       }
     }, title), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       tagName: "p",
       value: body,
       style: {
-        color: bodyColor
+        color: bodyColor,
+        textAlign: bodyAlignment
       }
-    }));
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null));
   }
-});
+};
+
+/***/ }),
+
+/***/ "./src/blocks/fullscreen-section/index.js":
+/*!************************************************!*\
+  !*** ./src/blocks/fullscreen-section/index.js ***!
+  \************************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    ColorPalette = _wp$blockEditor.ColorPalette,
+    MediaUpload = _wp$blockEditor.MediaUpload;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Button = _wp$components.Button,
+    RangeControl = _wp$components.RangeControl;
+var name = 'aca/fullscreen-section';
+var settings = {
+  title: 'Fullscreen Section',
+  description: 'A section with a background image that fills the entire screen',
+  icon: 'format-image',
+  category: 'layout',
+  //custom attributes
+  attributes: {
+    backgroundImage: {
+      type: 'string',
+      default: null
+    },
+    backgroundOverlayColor: {
+      type: 'string',
+      default: 'black'
+    },
+    backgroundOverlayOpacity: {
+      type: 'number',
+      default: 0.3
+    },
+    paddingTop: {
+      type: 'number',
+      default: 60
+    },
+    paddingBottom: {
+      type: 'number',
+      default: 60
+    }
+  },
+  //built-in functions
+  edit: function edit(_ref) {
+    var attributes = _ref.attributes,
+        setAttributes = _ref.setAttributes;
+    var backgroundImage = attributes.backgroundImage,
+        backgroundOverlayColor = attributes.backgroundOverlayColor,
+        backgroundOverlayOpacity = attributes.backgroundOverlayOpacity,
+        paddingTop = attributes.paddingTop,
+        paddingBottom = attributes.paddingBottom; //custom functions
+
+    function onChangeBackgroundImage(newImage) {
+      setAttributes({
+        backgroundImage: newImage.sizes.full.url
+      });
+    }
+
+    function onChangeBackgroundOverlayColor(newColor) {
+      setAttributes({
+        backgroundOverlayColor: newColor
+      });
+    }
+
+    function onChangeBackgroundOverlayOpacity(newOpacity) {
+      setAttributes({
+        backgroundOverlayOpacity: newOpacity
+      });
+    }
+
+    function onChangePaddingTop(newValue) {
+      setAttributes({
+        paddingTop: newValue
+      });
+    }
+
+    function onChangePaddingBottom(newValue) {
+      setAttributes({
+        paddingBottom: newValue
+      });
+    }
+
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, {
+      style: {
+        marginBottom: '40px'
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Background Settings'
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Select a Background image:")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onChangeBackgroundImage,
+      type: "image",
+      value: backgroundImage,
+      render: function render(_ref2) {
+        var open = _ref2.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          onClick: open,
+          icon: "upload",
+          className: "block-editor-media-placeholder__button is-button is-default is-large"
+        }, "Background Image");
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      style: {
+        marginTop: '20px',
+        marginBottom: '40px'
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Background Overlay Color:")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      value: backgroundOverlayColor,
+      onChange: onChangeBackgroundOverlayColor
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Overlay Opacity',
+      value: backgroundOverlayOpacity,
+      onChange: onChangeBackgroundOverlayOpacity,
+      min: 0,
+      max: 1,
+      step: 0.01
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      style: {
+        marginTop: '20px',
+        marginBottom: '40px'
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Background Padding:")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Top',
+      value: paddingTop,
+      onChange: onChangePaddingTop,
+      min: 0,
+      max: 600,
+      step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Bottom',
+      value: paddingBottom,
+      onChange: onChangePaddingBottom,
+      min: 0,
+      max: 600,
+      step: 1
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-container",
+      style: {
+        backgroundImage: "url(".concat(backgroundImage, ")"),
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        paddingTop: "".concat(paddingTop, "px"),
+        paddingBottom: "".concat(paddingBottom, "px")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-background-overlay",
+      style: {
+        backgroundColor: backgroundOverlayColor,
+        opacity: backgroundOverlayOpacity
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-inner-container"
+    }))];
+  },
+  save: function save(_ref3) {
+    var attributes = _ref3.attributes;
+    var backgroundImage = attributes.backgroundImage,
+        backgroundOverlayColor = attributes.backgroundOverlayColor,
+        backgroundOverlayOpacity = attributes.backgroundOverlayOpacity,
+        paddingTop = attributes.paddingTop,
+        paddingBottom = attributes.paddingBottom;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-container",
+      style: {
+        backgroundImage: "url(".concat(backgroundImage, ")"),
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        paddingTop: "".concat(paddingTop, "px"),
+        paddingBottom: "".concat(paddingBottom, "px")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-background-overlay",
+      style: {
+        backgroundColor: backgroundOverlayColor,
+        opacity: backgroundOverlayOpacity
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-inner-container"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-inner-content"
+    }, "[content goes here]")));
+  }
+};
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blocks_cta__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/cta */ "./src/blocks/cta/index.js");
+/* harmony import */ var _blocks_fullscreen_section__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/fullscreen-section */ "./src/blocks/fullscreen-section/index.js");
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+var blocks = [_blocks_cta__WEBPACK_IMPORTED_MODULE_0__, _blocks_fullscreen_section__WEBPACK_IMPORTED_MODULE_1__];
+
+function registerBlock(block) {
+  var name = block.name,
+      settings = block.settings;
+  registerBlockType(name, settings);
+}
+
+blocks.forEach(registerBlock);
 
 /***/ }),
 

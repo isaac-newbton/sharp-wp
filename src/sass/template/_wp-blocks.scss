@@ -1,0 +1,59 @@
+.has-primary-accent-background-color{
+    background-color: $accentRed;
+}
+
+figure.wp-block-image{
+    margin: 3rem 0;
+    line-height: 0;
+
+    &.align-full{
+        width: 100%;
+    }
+
+    img{
+        height: 400px;
+        object-fit: cover;
+
+        @media(min-width: $mobileBreakWidth){
+            height: auto;
+            object-fit: unset;
+        }
+    }
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+
+    figcaption{
+        line-height: 100%;
+        max-width: $maxContentWidth;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.wp-block-buttons{
+    max-width: $maxContentWidth;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    .wp-block-button{
+        width: 100%;
+
+        .wp-block-button__link{
+            text-transform: uppercase;
+            font-weight:bold;
+            font-size:0.875em;
+            width: 100%;
+            max-width: 20em;
+        }
+    }
+}
+
+.wp-block-separator{
+    border-width: 0.5rem 0 0 0;
+    border-color: black;
+}

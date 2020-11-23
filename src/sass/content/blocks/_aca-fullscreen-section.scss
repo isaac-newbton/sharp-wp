@@ -1,0 +1,35 @@
+.fullscreen-section-container{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    .fullscreen-section-background-overlay{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+
+    .fullscreen-section-inner-container{
+        position:relative;
+        z-index:1;
+        max-width:$maxContentWidth;
+        padding-left:$sidePadding;
+        padding-right:$sidePadding;
+        height:100%;
+        display:flex;
+        align-items:center;
+
+        .fullscreen-section-inner-content{
+            padding:$sidePadding;
+            background-color:rgba(255,255,255,0.75);
+        }
+    }
+}

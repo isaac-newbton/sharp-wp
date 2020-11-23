@@ -47,14 +47,8 @@
 
                         <div id="site_language_select_container">
                             <select id="site_language_select" tabindex="1">
-                                <option value="en">Language</option>
-                                <option value="en-us">American</option>
-                                <option value="en-au">Australian</option>
-                                <option value="en-uk">British</option>
-                                <option value="en-ca">Canadian</option>
-                                <option value="en-uk">English</option>
-                                <option value="en-la">Louisiana</option>
-                                <option value="en-nz">Newzealandese</option>
+                                <option value="en-us">Language</option>
+                                <option value="en">English</option>
                             </select>
                         </div>
 

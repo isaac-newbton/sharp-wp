@@ -15,7 +15,7 @@ get_header();
 
         <div class="page_content">
 
-            <p><?php esc_html_e('It looks like nothing was found at this location. Try searching for a different keyword.'); ?></p>
+            <p class="has-text-align-center"><?php esc_html_e('It looks like nothing was found at this location. Try searching for a different keyword.'); ?></p>
 
             <?php get_search_form(); ?>
 

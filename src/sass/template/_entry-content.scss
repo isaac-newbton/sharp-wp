@@ -1,6 +1,6 @@
 .entry_content{
 
-    p, ul, ol{
+    p, ul, ol, .wpforms-container{
         max-width: $maxContentWidth;
         margin-left: auto;
         margin-right: auto;
@@ -9,17 +9,22 @@
         margin-bottom: 2rem;
     }
 
-    >h2,
-    >h3,
-    >h4,
-    >h5,
-    >h6{
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
         max-width: $maxContentWidth;
         margin-left: auto;
         margin-right: auto;
         text-transform: uppercase;
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+
+    h2, .heading_2{
+        color: $accentRed;
+        font-weight: 900;
     }
 
     hr{

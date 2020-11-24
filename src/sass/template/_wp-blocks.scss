@@ -32,6 +32,11 @@ figure.wp-block-image{
     }
 }
 
+div.wp-block-image img{
+    height:auto;
+    object-fit:contain;
+}
+
 .wp-block-buttons{
     max-width: $maxContentWidth;
     margin-left: auto;

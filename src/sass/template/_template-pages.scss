@@ -1,0 +1,55 @@
+.search-results .site_main,
+.error404 .site_main {
+    max-width: $maxContentWidth;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px;
+    padding-left: $sidePadding;
+    padding-right: $sidePadding;
+
+    .page_title{
+        color: $accentRed;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    form.search {
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+}
+
+.search .results {
+    list-style: none;
+    margin: 30px auto;
+    padding: 0;
+    max-width: 60rem;
+
+    .result {
+        border-bottom: 1px solid black;
+
+        &:last-child{
+            border-bottom: unset;
+        }
+
+        .entry_header{
+            margin: 1rem 0;
+
+            .entry_title{
+                font-size: 2rem;
+                border-bottom: none;
+                width: unset;
+                text-align: left;
+                padding: 0;
+            }
+        }
+
+        .entry_summary{
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 180%;
+        }
+    }
+}

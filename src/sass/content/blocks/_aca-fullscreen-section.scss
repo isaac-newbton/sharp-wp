@@ -30,10 +30,80 @@
         .fullscreen-section-inner-content{
             padding:$sidePadding;
             background-color:rgba(255,255,255,0.75);
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6{
+                margin-top: 1rem;
+                margin-bottom: 2rem;
+
+                &:first-of-type{
+                    margin-bottom:1rem;
+                }
+
+                @media(min-width: $maxContentWidth){
+                    letter-spacing: 0.2rem;
+                }
+            }
+
+            h1{
+                font-size: 3.2rem;
+            }
+
+            h2{
+                font-size: 3.0rem;
+            }
+
+            h3{
+                font-size: 2.4rem;
+            }
+
+            h4{
+                font-size: 2.2rem;
+            }
+
+            h5{
+                font-size: 2.0rem;
+            }
+
+            h6{
+                font-size: 1.9rem;
+            }
+
+            @media(min-width: $mobileBreakWidth){
+                h1{
+                    font-size: 5.4rem;
+                }
+    
+                h2{
+                    font-size: 5.4rem;
+                }
+    
+                h3{
+                    font-size: 2.7rem;
+                }
+    
+                h4{
+                    font-size: 2.4rem;
+                }
+    
+                h5{
+                    font-size: 2.2rem;
+                }
+    
+                h6{
+                    font-size: 1.9rem;
+                }
+            }
         }
     }
 
     .wp-block-button{
         text-align:center;
+        margin-top:2rem;
+        margin-bottom:2rem;
     }
 }

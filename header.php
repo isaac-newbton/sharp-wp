@@ -46,10 +46,7 @@
                     <div id="site_secondary_nav_wrapper">
 
                         <div id="site_language_select_container">
-                            <select id="site_language_select" tabindex="1">
-                                <option value="en-us">Language</option>
-                                <option value="en">English</option>
-                            </select>
+                            <div id="site_language_select"></div>
                         </div>
 
                         <?php wp_nav_menu([

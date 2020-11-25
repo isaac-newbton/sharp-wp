@@ -44,17 +44,17 @@ div.wp-block-image img{
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
 
-    .wp-block-button{
+.wp-block-button{
+    width: 100%;
+
+    .wp-block-button__link{
+        text-transform: uppercase;
+        font-weight:bold;
+        font-size:0.875em;
         width: 100%;
-
-        .wp-block-button__link{
-            text-transform: uppercase;
-            font-weight:bold;
-            font-size:0.875em;
-            width: 100%;
-            max-width: 20em;
-        }
+        max-width: 20em;
     }
 }
 

@@ -358,11 +358,14 @@ __webpack_require__.r(__webpack_exports__);
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     ColorPalette = _wp$blockEditor.ColorPalette,
-    MediaUpload = _wp$blockEditor.MediaUpload;
+    MediaUpload = _wp$blockEditor.MediaUpload,
+    InnerBlocks = _wp$blockEditor.InnerBlocks;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     Button = _wp$components.Button,
-    RangeControl = _wp$components.RangeControl;
+    RangeControl = _wp$components.RangeControl,
+    ColorPicker = _wp$components.ColorPicker;
+var ALLOWED_BLOCKS = ['core/button', 'core/paragraph', 'core/html', 'core/heading', 'core/image'];
 var name = 'aca/fullscreen-section';
 var settings = {
   title: 'Fullscreen Section',
@@ -390,6 +393,22 @@ var settings = {
     paddingBottom: {
       type: 'number',
       default: 60
+    },
+    innerPadding: {
+      type: 'number',
+      default: 20
+    },
+    innerBackgroundColor: {
+      type: 'string',
+      default: 'rgba(255,255,255,1.0)'
+    },
+    innerBorderRadius: {
+      type: 'number',
+      default: 0
+    },
+    innerMaxWidth: {
+      type: 'number',
+      default: 1200
     }
   },
   //built-in functions
@@ -400,7 +419,11 @@ var settings = {
         backgroundOverlayColor = attributes.backgroundOverlayColor,
         backgroundOverlayOpacity = attributes.backgroundOverlayOpacity,
         paddingTop = attributes.paddingTop,
-        paddingBottom = attributes.paddingBottom; //custom functions
+        paddingBottom = attributes.paddingBottom,
+        innerPadding = attributes.innerPadding,
+        innerBackgroundColor = attributes.innerBackgroundColor,
+        innerBorderRadius = attributes.innerBorderRadius,
+        innerMaxWidth = attributes.innerMaxWidth; //custom functions
 
     function onChangeBackgroundImage(newImage) {
       setAttributes({
@@ -429,6 +452,30 @@ var settings = {
     function onChangePaddingBottom(newValue) {
       setAttributes({
         paddingBottom: newValue
+      });
+    }
+
+    function onChangeInnerPadding(newValue) {
+      setAttributes({
+        innerPadding: newValue
+      });
+    }
+
+    function onChangeInnerBackgroundColor(newColor) {
+      setAttributes({
+        innerBackgroundColor: 'rgba(' + newColor.r + ', ' + newColor.g + ', ' + newColor.b + ', ' + newColor.a + ')'
+      });
+    }
+
+    function onChangeInnerBorderRadius(newValue) {
+      setAttributes({
+        innerBorderRadius: newValue
+      });
+    }
+
+    function onChangeInnerMaxWidth(newValue) {
+      setAttributes({
+        innerMaxWidth: newValue
       });
     }
 
@@ -484,6 +531,38 @@ var settings = {
       min: 0,
       max: 600,
       step: 1
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      style: {
+        marginTop: '20px',
+        marginBottom: '40px'
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Inner Container:")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPicker, {
+      color: innerBackgroundColor,
+      onChangeComplete: function onChangeComplete(color) {
+        return onChangeInnerBackgroundColor(color.rgb);
+      },
+      disableAlpha: false
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Padding',
+      value: innerPadding,
+      onChange: onChangeInnerPadding,
+      min: 0,
+      max: 100,
+      step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Corner Radius',
+      value: innerBorderRadius,
+      onChange: onChangeInnerBorderRadius,
+      min: 0,
+      max: 100,
+      step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
+      label: 'Max Width',
+      value: innerMaxWidth,
+      onChange: onChangeInnerMaxWidth,
+      min: 200,
+      max: 1800,
+      step: 40
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "fullscreen-section-container",
       style: {
@@ -502,7 +581,17 @@ var settings = {
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "fullscreen-section-inner-container"
-    }))];
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "fullscreen-section-inner-content",
+      style: {
+        backgroundColor: innerBackgroundColor,
+        padding: innerPadding,
+        borderRadius: innerBorderRadius,
+        maxWidth: innerMaxWidth
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+      allowedBlocks: ALLOWED_BLOCKS
+    }))))];
   },
   save: function save(_ref3) {
     var attributes = _ref3.attributes;
@@ -510,7 +599,11 @@ var settings = {
         backgroundOverlayColor = attributes.backgroundOverlayColor,
         backgroundOverlayOpacity = attributes.backgroundOverlayOpacity,
         paddingTop = attributes.paddingTop,
-        paddingBottom = attributes.paddingBottom;
+        paddingBottom = attributes.paddingBottom,
+        innerPadding = attributes.innerPadding,
+        innerBackgroundColor = attributes.innerBackgroundColor,
+        innerBorderRadius = attributes.innerBorderRadius,
+        innerMaxWidth = attributes.innerMaxWidth;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "fullscreen-section-container",
       style: {
@@ -530,8 +623,14 @@ var settings = {
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "fullscreen-section-inner-container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "fullscreen-section-inner-content"
-    }, "[content goes here]")));
+      className: "fullscreen-section-inner-content",
+      style: {
+        backgroundColor: innerBackgroundColor,
+        padding: innerPadding,
+        borderRadius: innerBorderRadius,
+        maxWidth: innerMaxWidth
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null))));
   }
 };
 

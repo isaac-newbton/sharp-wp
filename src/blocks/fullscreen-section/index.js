@@ -1,13 +1,16 @@
 const {
     InspectorControls,
     ColorPalette,
-    MediaUpload
+    MediaUpload,
+    InnerBlocks
 } = wp.blockEditor;
 const {
     PanelBody,
     Button,
-    RangeControl
+    RangeControl,
+    ColorPicker
 } = wp.components;
+const ALLOWED_BLOCKS = ['core/button', 'core/paragraph', 'core/html', 'core/heading', 'core/image'];
 
 export const name = 'aca/fullscreen-section';
 
@@ -38,6 +41,22 @@ export const settings = {
         paddingBottom: {
             type: 'number',
             default: 60
+        },
+        innerPadding: {
+            type: 'number',
+            default: 20
+        },
+        innerBackgroundColor: {
+            type: 'string',
+            default: 'rgba(255,255,255,1.0)'
+        },
+        innerBorderRadius: {
+            type: 'number',
+            default: 0
+        },
+        innerMaxWidth: {
+            type: 'number',
+            default: 1200
         }
     },
 
@@ -48,7 +67,11 @@ export const settings = {
             backgroundOverlayColor,
             backgroundOverlayOpacity,
             paddingTop,
-            paddingBottom
+            paddingBottom,
+            innerPadding,
+            innerBackgroundColor,
+            innerBorderRadius,
+            innerMaxWidth
         } = attributes;
 
         //custom functions
@@ -79,6 +102,30 @@ export const settings = {
         function onChangePaddingBottom(newValue){
             setAttributes({
                 paddingBottom: newValue
+            });
+        }
+
+        function onChangeInnerPadding(newValue){
+            setAttributes({
+                innerPadding: newValue
+            });
+        }
+
+        function onChangeInnerBackgroundColor(newColor){
+            setAttributes({
+                innerBackgroundColor: 'rgba(' + newColor.r + ', ' + newColor.g + ', ' + newColor.b + ', ' + newColor.a + ')'
+            });
+        }
+
+        function onChangeInnerBorderRadius(newValue){
+            setAttributes({
+                innerBorderRadius: newValue
+            });
+        }
+
+        function onChangeInnerMaxWidth(newValue){
+            setAttributes({
+                innerMaxWidth: newValue
             });
         }
 
@@ -130,6 +177,34 @@ export const settings = {
                             max={600}
                             step={1} />
                     </div>
+                    <div style={ { marginTop: '20px', marginBottom: '40px' } }>
+                        <p><strong>Inner Container:</strong></p>
+                        <ColorPicker
+                            color={innerBackgroundColor}
+                            onChangeComplete={ (color) => onChangeInnerBackgroundColor(color.rgb) }
+                            disableAlpha={ false } />
+                        <RangeControl
+                            label={'Padding'}
+                            value={innerPadding}
+                            onChange={onChangeInnerPadding}
+                            min={0}
+                            max={100}
+                            step={1} />
+                        <RangeControl
+                            label={'Corner Radius'}
+                            value={innerBorderRadius}
+                            onChange={onChangeInnerBorderRadius}
+                            min={0}
+                            max={100}
+                            step={1} />
+                        <RangeControl
+                            label={'Max Width'}
+                            value={innerMaxWidth}
+                            onChange={onChangeInnerMaxWidth}
+                            min={200}
+                            max={1800}
+                            step={40} />
+                    </div>
                 </PanelBody>
             </InspectorControls>,
             <div className="fullscreen-section-container" style={ {
@@ -145,7 +220,14 @@ export const settings = {
 					opacity: backgroundOverlayOpacity
 				} }></div>
                 <div className="fullscreen-section-inner-container">
-
+                    <div className="fullscreen-section-inner-content" style={ {
+                        backgroundColor: innerBackgroundColor,
+                        padding: innerPadding,
+                        borderRadius: innerBorderRadius,
+                        maxWidth: innerMaxWidth
+                    } }>
+                        <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+                    </div>
                 </div>
             </div>
         ]);
@@ -157,7 +239,11 @@ export const settings = {
             backgroundOverlayColor,
             backgroundOverlayOpacity,
             paddingTop,
-            paddingBottom
+            paddingBottom,
+            innerPadding,
+            innerBackgroundColor,
+            innerBorderRadius,
+            innerMaxWidth
         } = attributes;
         return (
             <div className="fullscreen-section-container" style={ {
@@ -173,8 +259,13 @@ export const settings = {
 					opacity: backgroundOverlayOpacity
 				} }></div>
                 <div className="fullscreen-section-inner-container">
-                    <div className="fullscreen-section-inner-content">
-                        [content goes here]
+                    <div className="fullscreen-section-inner-content" style={ {
+                        backgroundColor: innerBackgroundColor,
+                        padding: innerPadding,
+                        borderRadius: innerBorderRadius,
+                        maxWidth: innerMaxWidth
+                    } }>
+                        <InnerBlocks.Content/>
                     </div>
                 </div>
             </div>

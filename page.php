@@ -5,7 +5,7 @@ get_header();
 
 <div id="primary">
 
-    <main id="main">
+    <main id="main" class="site_main">
 
         <?php while(have_posts()): the_post(); ?>
             <?php get_template_part('template-parts/content', 'page'); ?>

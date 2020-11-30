@@ -2,6 +2,7 @@
     background: $accentRed;
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 
 #site_top{
@@ -53,6 +54,9 @@
     z-index:999999;
     padding:0;
     transition: left 0.2s;
+    max-height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
 
     &.active{
         left:0;
@@ -70,6 +74,9 @@
         box-shadow:unset;
         z-index:unset;
         background-color: $accentRed;
+        max-height: unset;
+        overflow: unset;
+        overflow-x: unset;
     }
 }
 

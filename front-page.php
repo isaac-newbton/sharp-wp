@@ -5,7 +5,7 @@ get_header();
 
 <div id="primary">
 
-    <main id="main" class="site_main">
+    <main id="main" class="site_main home_main">
 
         <?php if(function_exists('get_field')): $slides = get_field('slides'); ?>
             <?php if($slides && is_array($slides) && !empty($slides)): ?>

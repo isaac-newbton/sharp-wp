@@ -18,6 +18,7 @@
 
     @media(min-width:$mobileBreakWidth){
         flex-direction:row;
+        padding-right: $sidePadding;
     }
 }
 
@@ -127,7 +128,7 @@
     .menu-item{
 
         a{
-            font-weight:bold;
+            font-weight:900;
             font-size:1.4rem;
             color:$mainNavMobileLinkColor;
             text-decoration:none;
@@ -154,9 +155,10 @@
         .menu-item{
             
             a{
-                padding-left:0.67em;
-                padding-right:0.67em;
+                padding-left:0.75em;
+                padding-right:0.75em;
                 color:$mainNavLinkColor;
+                font-size: 1.5rem;
             }
 
             &:first-child{
@@ -241,6 +243,7 @@
 
             @media(min-width: $mobileBreakWidth){
                 color: $mainNavLinkColor;
+                width: 110px;
 
                 &::placeholder{
                     color: scale-color($mainNavLinkColor, $alpha: -25%);

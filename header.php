@@ -9,6 +9,8 @@
 
 <body <?php body_class(); ?> >
 
+    <?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
+
     <div id="page" class="site">
 
         <button type="button" id="site_nav_button" class="active" aria-label="Open Navigation">

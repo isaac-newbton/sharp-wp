@@ -1,10 +1,8 @@
 const { registerBlockType } = wp.blocks;
 
-import * as cta from './blocks/cta';
 import * as fullscreenSection from './blocks/fullscreen-section';
 
 const blocks = [
-	cta,
 	fullscreenSection
 ];
 

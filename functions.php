@@ -2,7 +2,7 @@
 define('ACA_INCLUDE_PATH', get_template_directory() . '/inc/');
 define('ACA_FONTAWESOME_VERSION', '5.15.1');
 
-include_once ACA_INCLUDE_PATH . 'custom-post-types.php';
+// include_once ACA_INCLUDE_PATH . 'custom-post-types.php';
 include_once ACA_INCLUDE_PATH . 'acf-setup.php';
 
 function aca_theme_setup(){

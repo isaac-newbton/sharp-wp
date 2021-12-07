@@ -62,3 +62,11 @@ div.wp-block-image img{
     border-width: 0.5rem 0 0 0;
     border-color: black;
 }
+
+figure.wp-block-video {
+    max-width: $maxContentWidth;
+
+    video {
+        max-width: 640px;
+    }
+}
